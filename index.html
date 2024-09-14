@@ -40,6 +40,8 @@
     </div>
     <div class="ground-footer"></div> 
 
+    <audio id="celebration-sound" src="yippie.mp3" loop></audio>
+
     <script>
         document.getElementById('yes-btn').addEventListener('mouseover', createSparks);
 
@@ -81,14 +83,25 @@
             const loader = document.querySelector('.loader');
             const celebration = document.getElementById('celebration');
             const questionArea = document.querySelector('.question-area');
+            const audio = document.getElementById('celebration-sound'); 
+
             overlay.style.display = 'block'; 
             loader.style.display = 'block'; 
+
             setTimeout(function() {
                 loader.style.display = 'none'; 
                 overlay.style.display = 'none'; 
                 questionArea.style.display = 'none'; 
                 celebration.style.display = 'block'; 
                 document.body.classList.add('celebration-active'); 
+
+                audio.play();
+
+                setTimeout(function() {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }, 10000);
+
             }, 3200); 
         });
     </script>
